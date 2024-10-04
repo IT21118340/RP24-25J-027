@@ -11,13 +11,14 @@ namespace ECommerceWebAPI.Controllers
     public class OrderController : ControllerBase
     {
         private readonly OrderService _service;
+        private readonly NotificationService _nservice;
 
-        public OrderController(OrderService service)
+        public OrderController(OrderService service, NotificationService nservice)
         {
             _service = service;
+            _nservice = nservice;
         }
 
-        // GET: api/<OrderController>
         [Authorize(Roles ="Admin, CSR, Customer")]
         [HttpGet]
         public async Task<IEnumerable<Order>> Get()
@@ -35,7 +36,6 @@ namespace ECommerceWebAPI.Controllers
             }
         }
 
-        // GET api/<OrderController>/:id
         [Authorize]
         [HttpGet("{id}")]
         public async Task<ActionResult<Order?>> GetById(String id)
@@ -44,7 +44,6 @@ namespace ECommerceWebAPI.Controllers
             return response is not null? Ok(response) : NotFound();
         }
 
-        // POST api/<OrderController>
         [Authorize(Roles = "Customer")]
         [HttpPost]
         public async Task<ActionResult> Add([FromBody] Order request)
@@ -53,17 +52,32 @@ namespace ECommerceWebAPI.Controllers
             return Ok(new { Message = "Order added successfully" });
         }
 
-        // PUT api/<OrderController>/
         [Authorize(Roles = "Admin")]
-        [HttpPut]
+        [HttpPut("UpdateStatus")]
         public async Task<ActionResult> UpdateStatus([FromBody] string orderId, string orderStatus)
         {
             _service.UpdateStatus(orderId, orderStatus);
             return Ok(new { Message = "Order status updated successfully" });
         }
 
-        // DELETE api/<OrderController>/:id
-        [Authorize(Roles = "Admin, CSR")]
+        [Authorize(Roles = "Customer")]
+        [HttpPost("RequestCancelOrder/{id}")]
+        public async Task<ActionResult> RequestCancelOrder(string orderId)
+        {
+            string msg = "Please cancel Order: " + orderId;
+            _nservice.Add(null, msg);
+            return Ok(new { Message = "Order status updated successfully" });
+        }
+
+        [Authorize(Roles = "CSR")]
+        [HttpPut("CancelOrder")]
+        public async Task<ActionResult> CancelOrder([FromBody] string orderId)
+        {
+            _service.UpdateStatus(orderId, "Canceled");
+            return Ok(new { Message = "Order is cancelled" });
+        }
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> Delete(String id)
         {
