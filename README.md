@@ -19,9 +19,23 @@
 	
 ### Research Problem?
 
-1. Lack of dynamically adaptable content.
+1. Lack of dynamically adaptable excersises.
 2. Lack tools to provide assessments for essay-type questions that typically require human evaluation.
 
 ### Research Objectives
 
 - Provide a platform to improve advanced comprehension skills such as Sequencing, Summarizing, Self-questioning 
+
+### System Architecture
+![System Architecture]()
+
+### Project Completion - Progress Presentation 01
+- Prompt Engineering
+- Selecting Methodology: AI Agent vs RAG vs Agentic
+- AI Agent
+ ** Selecting LLM Model & Inference Engine: Phi3, Ollama
+ ** Selecting Architecture & Patterns: ReAct, Tool Calling
+- RAG Workflow
+ ** Selecting Embedding Model & Vector DB: Ollama, ChromaDB
+ ** Embedding Creation Pipeline
+ ** Corrective RAG
