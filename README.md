@@ -1,4 +1,4 @@
-# AI-enabled Intelligent Assistant t* Improve Reading and Comprehension Skills in English Language
+# AI-enabled Intelligent Assistant to Improve Reading and Comprehension Skills in English Language
 
 ## Advanced Comprehension Skills Enhancement Module
 
@@ -27,7 +27,7 @@
 - Provide a platform to improve advanced comprehension skills such as Sequencing, Summarizing, Self-questioning 
 
 ### System Architecture
-![System Architecture]()
+![System Architecture](https://github.com/IT21118340/RP24-25J-027/blob/master/Images/SysDia.png)
 
 ### Project Completion - Progress Presentation 01
 - Prompt Engineering
