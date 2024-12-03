@@ -33,9 +33,9 @@
 - Prompt Engineering
 - Selecting Methodology: AI Agent vs RAG vs Agentic
 - AI Agent
- ** Selecting LLM Model & Inference Engine: Phi3, Ollama
- ** Selecting Architecture & Patterns: ReAct, Tool Calling
+	* Selecting LLM Model & Inference Engine: Phi3, Ollama
+ 	* Selecting Architecture & Patterns: ReAct, Tool Calling
 - RAG Workflow
- ** Selecting Embedding Model & Vector DB: Ollama, ChromaDB
- ** Embedding Creation Pipeline
- ** Corrective RAG
+	* Selecting Embedding Model & Vector DB: Ollama, ChromaDB
+ 	* Embedding Creation Pipeline
+ 	* Corrective RAG
